@@ -30,7 +30,14 @@ public class Player : MonoBehaviour
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0f, inputVector.y);
 
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        float playerSize = .7f;
+
+        bool canMove = !Physics.Raycast(transform.position, moveDirection, playerSize);
+
+        if (canMove)
+        {
+            transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        }
 
         float rotateSpeed = 10f;
 
